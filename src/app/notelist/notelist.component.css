@@ -1,0 +1,47 @@
+.note-list {
+    background-color: white;
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin: 10px;
+  }
+  
+  .note-list .note {
+    background: rgb(247 223 108);
+    padding: 20px;
+    width: 160px;
+    min-height: 150px;
+    font-family: cursive;
+    font-size: 16px;
+    cursor: pointer;
+    position: relative;
+  }
+  
+  .note-list .note button {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+  
+  .new-note-area {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    cursor: pointer;
+    font-size: 20px;
+    color: blue;
+  }
+  
+  textarea {
+    background: transparent;
+    resize: none;
+    outline: none;
+    width: 90%;
+    padding: 10px;
+    min-height: 130px;
+    height: 100%;
+    border: none;
+    margin-top: 5px;
+  }
+  
