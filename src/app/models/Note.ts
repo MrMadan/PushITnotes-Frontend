@@ -1,4 +1,7 @@
-export interface Note {
-    id: number;
-    text: String;
+ export interface Note {
+    postId: number;
+    postText: string;
   }
+
+
+  

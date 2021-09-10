@@ -10,14 +10,15 @@ import { Note } from '../models/Note';
 })
 export class NoteListComponent implements OnInit {
   noteList: Note[] = [];
-  editingNewNote: boolean =false;
-  newNoteText: string = '';
+  editingNewNote: boolean = false;
+  newNoteText:any;
 
   @ViewChild('textarea', { read: ElementRef }) textArea: any;
 
   constructor(private noteListSerivce: NoteListService) {}
 
   ngOnInit() {
+    console.log("Inside onInit---> "+this.getNoteList());
     this.getNoteList();
   }
 
@@ -25,6 +26,7 @@ export class NoteListComponent implements OnInit {
     this.noteListSerivce.getNotes().subscribe({
       next: noteList => {
         this.noteList = noteList;
+        console.log('getting all notes');
         console.log(noteList);
       },
       error: err => console.log(err)
@@ -40,8 +42,11 @@ export class NoteListComponent implements OnInit {
 
   onNewNoteTextBlur() {
     if (this.newNoteText) {
-      this.noteListSerivce.addNewNote(this.newNoteText);
-      this.getNoteList();
+      this.noteListSerivce.addNewNote(this.newNoteText).subscribe(data => {
+        console.log(data);
+        this.getNoteList();
+      });
+      
     }
     this.newNoteText = '';
     this.editingNewNote = false;
