@@ -2,6 +2,3 @@
     postId: number;
     postText: string;
   }
-
-
-  

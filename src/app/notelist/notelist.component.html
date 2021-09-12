@@ -1,6 +1,7 @@
 <div class="note-list">
     <div *ngFor="let note of noteList">
-      <note [note]="note"> </note>
+      <note [note]="note" (onNoteUpdateSuccess)="onNoteUpdateSuccess($event)"
+    (onNoteDeleteSuccess)="onNoteDeleteSuccess($event)"> </note>
     </div>
     <div class="note new-note-area">
       <a (click)="onNewNoteClick()" *ngIf="!editingNewNote; else elseNewNoteTextInput">+ New Note</a>

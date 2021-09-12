@@ -18,7 +18,6 @@ export class NoteListComponent implements OnInit {
   constructor(private noteListSerivce: NoteListService) {}
 
   ngOnInit() {
-    console.log("Inside onInit---> "+this.getNoteList());
     this.getNoteList();
   }
 
@@ -26,8 +25,6 @@ export class NoteListComponent implements OnInit {
     this.noteListSerivce.getNotes().subscribe({
       next: noteList => {
         this.noteList = noteList;
-        console.log('getting all notes');
-        console.log(noteList);
       },
       error: err => console.log(err)
     });
@@ -52,5 +49,16 @@ export class NoteListComponent implements OnInit {
     this.editingNewNote = false;
   }
 
-  saveNewNote() {}
+  onNoteUpdateSuccess(updatedNote: Note) {
+    const note  = this.noteList.find(n => n.postId === updatedNote.postId);
+    if(note) {
+      note.postText = updatedNote.postText;
+      }
+
+  }
+
+  onNoteDeleteSuccess(deletedNote:Note) {
+    const noteIndex = this.noteList.findIndex(n => n.postId === deletedNote.postId);
+    this.noteList.splice(noteIndex, 1);
+  }
 }
